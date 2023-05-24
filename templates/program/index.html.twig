@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}All programs{% endblock %}
+
+{% block body %}
+    <h1>All series from the Program table : </h1>
+    {% for program in programs %}
+        <div>
+            <img class="align-self-start mr-3" src="/build/images/{{ program.poster }}" alt="{{ program.title }}" height="100px" width="auto">
+            <h2>{{ loop.index }} / {{ program.title }} - Category : {{ program.category.name }}</h2>
+            <p>{{ program.synopsis }}</p>
+            <a href="{{ path("show", { id: program.id }) }}">Check out this serie.</a>
+        </div>
+    {% else %}
+        No series found.
+        <img src="{{ asset('build/images/sadFace.jpg') }}" alt="">
+    {% endfor %}
+
+    <a href="{{ path('default_index') }}">
+        Return home.
+    </a>
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Serie number: {{ program.id }}{% endblock %}
+
+{% block body %}
+
+    <div class="media">
+        <img class="align-self-start mr-3" src="{{program.poster}}" alt="{{ program.title }} poster">
+        <div class="media-body">
+            <h1 class="mt-0">{{ program.title }}</h1>
+            <p>Category : {{ program.category.name }}</p>
+
+            <h2>Season: {{ season.number }}</h2>
+            <p>Season description: {{ season.description}} </p>
+
+            <ul>
+                <h2>All episodes:</h2>
+                {% if season.episodes is empty %}
+                   <p> There are no episodes available at the moment! </p>
+                    <img src="{{ asset('build/images/sadFace.jpg') }}" alt="">
+
+                {% endif %}
+                {% for episode in season.episodes %}
+                <p>Episode: {{ episode.number }}. {{ episode.title }}</p>
+                    <p>{{ episode.synopsis }}</p> <br>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+    <a href="{{ path('index') }}">
+        Return to all the series.
+    </a>
+{% endblock %}
