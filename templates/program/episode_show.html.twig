@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Serie number: {{ program.id }}{% endblock %}
+
+{% block body %}
+
+    <div>
+    <h1>{{ program.title }}</h1>
+    <h2>Season: {{ season.number }}</h2>
+    <h3>Episode: {{ episode.number }} <br>
+        {{ episode.title }} <br>
+        {{ episode.synopsis }}
+    </h3>
+    </div>
+
+    <a href="{{ path('index') }}">
+        Return to all the series.
+    </a>
+{% endblock %}

@@ -21,8 +21,7 @@
                 {% endif %}
 
                 {% for episode in season.episodes %}
-                <p>Episode: {{ episode.number }}. {{ episode.title }}</p>
-                    <p>{{ episode.synopsis }}</p> <br>
+                    <a href="{{ path('showEpisode', { program: program.id, season: season.id, episode: episode.id}) }}"><p>Episode: {{ episode.number }}. {{ episode.title }}</p></a>
                 {% endfor %}
             </ul>
         </div>
