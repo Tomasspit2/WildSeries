@@ -6,6 +6,7 @@ use App\Entity\Episode;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
+use Faker\Factory;
 
 class EpisodeFixtures extends Fixture implements DependentFixtureInterface
 {
@@ -32,6 +33,53 @@ class EpisodeFixtures extends Fixture implements DependentFixtureInterface
         $episode->setNumber(3);
         $episode->setSynopsis('An epic showdown between old rivals results in a fateful moment for Zaun. Jayce and Viktor risk it all for their research.');
         $manager->persist($episode);
+
+        $faker = Factory::create();
+
+        for ($i = 0; $i < 10; $i++) {
+            $episode = new Episode();
+            $episode->setSeason($this->getReference('season_1'));
+            $episode->setTitle($faker->sentence);
+            $episode->setNumber($i + 1);
+            $episode->setSynopsis($faker->paragraph);
+            $manager->persist($episode);
+        }
+
+        for ($i = 0; $i < 10; $i++) {
+            $episode = new Episode();
+            $episode->setSeason($this->getReference('season_2'));
+            $episode->setTitle($faker->sentence);
+            $episode->setNumber($i + 1);
+            $episode->setSynopsis($faker->paragraph);
+            $manager->persist($episode);
+        }
+
+        for ($i = 0; $i < 10; $i++) {
+            $episode = new Episode();
+            $episode->setSeason($this->getReference('season_3'));
+            $episode->setTitle($faker->sentence);
+            $episode->setNumber($i + 1);
+            $episode->setSynopsis($faker->paragraph);
+            $manager->persist($episode);
+        }
+
+        for ($i = 0; $i < 10; $i++) {
+            $episode = new Episode();
+            $episode->setSeason($this->getReference('season_4'));
+            $episode->setTitle($faker->sentence);
+            $episode->setNumber($i + 1);
+            $episode->setSynopsis($faker->paragraph);
+            $manager->persist($episode);
+        }
+
+        for ($i = 0; $i < 10; $i++) {
+            $episode = new Episode();
+            $episode->setSeason($this->getReference('season_0'));
+            $episode->setTitle($faker->sentence);
+            $episode->setNumber($i + 1);
+            $episode->setSynopsis($faker->paragraph);
+            $manager->persist($episode);
+        }
 
         $manager->flush();
     }
