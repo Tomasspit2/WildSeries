@@ -64,6 +64,15 @@ class ProgramFixtures extends Fixture
         $this->addReference('program_Arcane', $program);
         $manager->persist($program);
 
+        $program = new Program();
+        $program->setTitle('Faker The Series!');
+        $program->setPoster('FakerPHP.webp');
+        $program->setSynopsis('Faker is a PHP library that generates fake data for you. Whether you need to bootstrap your database, create good-looking XML documents, fill-in your persistence to stress test it, or anonymize data taken from a production service, Faker is for you.');
+        $program->setCategory($this->getReference('category_Horror'));
+        $this->addReference('program_Faker', $program);
+        $manager->persist($program);
+
+
         $manager->flush();
     }
 

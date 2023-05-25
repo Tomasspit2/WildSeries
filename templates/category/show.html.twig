@@ -10,7 +10,7 @@
         <ul>
             {% for program in programs %}
                 <li>
-                    <img class="align-self-start mr-3" src="{{program.poster}}" alt="{{ program.title }} poster">
+                    <img class="align-self-start mr-3" src="/build/images/{{ program.poster }}" alt="{{ program.title }} poster">
                     <h3>Series ID: {{ program.id }}</h3>
                     <p>Title: {{ program.title }}</p>
                     <p>Summary: {{ program.synopsis }}</p>

@@ -6,6 +6,7 @@ use App\Entity\Season;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
+use Faker\Factory;
 
 class SeasonFixtures extends Fixture implements DependentFixtureInterface
 {
@@ -26,6 +27,18 @@ class SeasonFixtures extends Fixture implements DependentFixtureInterface
         $season->setDescription('Ted Mosby sits down with his kids, to tell them the story of how he met their mother. The story is told through memories of his friends Marshall, Lily, Robin, and Barney Stinson.');
         $manager->persist($season);
         $this->addReference('season1_HowIMetYourMother', $season);
+
+        $faker = Factory::create();
+
+        for ($j = 0; $j < 5; $j++) {
+            $season = new Season();
+            $season->setNumber($j + 1);
+            $season->setProgram($this->getReference('program_Faker'));
+            $season->setYear($faker->numberBetween(2000, 2023));
+            $season->setDescription($faker->paragraph);
+            $manager->persist($season);
+            $this->addReference('season_' . $j, $season);
+        }
 
         $manager->flush();
     }
