@@ -28,6 +28,23 @@ class SeasonFixtures extends Fixture implements DependentFixtureInterface
         $manager->persist($season);
         $this->addReference('season1_HowIMetYourMother', $season);
 
+        $season = new Season();
+        $season->setNumber(1);
+        $season->setProgram($this->getReference('program_ResidentEvil'));
+        $season->setYear(2022);
+        $season->setDescription('Nearly three decades after the discovery of the T-virus, an outbreak reveals the Umbrella Corporation\'s dark secrets.');
+        $manager->persist($season);
+        $this->addReference('season1_ResidentEvil', $season);
+
+        $season = new Season();
+        $season->setNumber(1);
+        $season->setProgram($this->getReference('program_TheTimeTravelersWife'));
+        $season->setYear(2022);
+        $season->setDescription('Tells the intricate love story of Clare and Henry, and a marriage with a problem... time travel.');
+        $manager->persist($season);
+        $this->addReference('season1_TimeTravelersWife', $season);
+
+
         $faker = Factory::create();
 
         for ($j = 0; $j < 5; $j++) {

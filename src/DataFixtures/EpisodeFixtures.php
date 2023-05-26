@@ -34,6 +34,20 @@ class EpisodeFixtures extends Fixture implements DependentFixtureInterface
         $episode->setSynopsis('An epic showdown between old rivals results in a fateful moment for Zaun. Jayce and Viktor risk it all for their research.');
         $manager->persist($episode);
 
+        $episode = new Episode();
+        $episode->setSeason($this->getReference('season1_ResidentEvil'));
+        $episode->setTitle('Welcome To Raccoon City');
+        $episode->setNumber(1);
+        $episode->setSynopsis('When the Wesker kids move to New Raccoon City, the secrets they uncover might just be the end of everything.');
+        $manager->persist($episode);
+
+        $episode = new Episode();
+        $episode->setSeason($this->getReference('season1_TimeTravelersWife'));
+        $episode->setTitle('Episode #1.1');
+        $episode->setNumber(1);
+        $episode->setSynopsis('In the clearing behind her home, six-year-old Clare Abshire encounters 36-year-old time traveler Henry DeTamble for the first time. Fourteen years later, an unexpected reunion a the library gives Henry the opportunity to meet Clare.');
+        $manager->persist($episode);
+
         $faker = Factory::create();
 
         for ($i = 0; $i < 10; $i++) {
