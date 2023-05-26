@@ -14,9 +14,17 @@
                     <h3>Series ID: {{ program.id }}</h3>
                     <p>Title: {{ program.title }}</p>
                     <p>Summary: {{ program.synopsis }}</p>
+                {% if category.name == 'Adult' %}
+                <a href="https://giphy.com/clips/southpark-season-6-south-park-episode-17-17ejc8zSLiqn2w2mhH">Go to Adult Content</a>
+            {% else %}
                     <a href="{{ path('show', {'id': program.id}) }}">View File</a>
+                {% endif %}
                 </li>
             {% endfor %}
         </ul>
+
+
+
+
     {% endif %}
 {% endblock %}
